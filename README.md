@@ -24,7 +24,7 @@ The following sections catalogue this project's development process, including s
 
 
 ### Data Cleaning 
-During cleaning, empty or columns which were deemed irrelevant to the problem were removed. Irrelevant columns include:
+During cleaning, empty columns or columns which were deemed irrelevant to the problem were removed. Irrelevant columns include:
 1. **OBS** - Observation number, instead used as an index
 2. **HURRICANE.NAMES** - If the outage was caused by a hurricane, provide its name. This was dropped due to the sparsity of data in this column
 3. **DEMAND.LOSS.MW** - Although intending to record the loss of electricity (in MW/hr), according to the dataset's source "in many cases, total demand is reported" instead. Coupled with a large proportion of missing values, this column does not contain enough real data to aid in predicting.

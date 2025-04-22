@@ -32,6 +32,18 @@ During cleaning, empty columns or columns which were deemed irrelevant to the pr
 
 Additionally, basic type casting for numerical features was performed. After performing cleaning (as well as imputations and transformations, as described later), the first few rows of the dataset now look like:
 
+<style>
+table {
+  display: block;
+  overflow-x: auto;
+  width: 100%;
+}
+th, td {
+  white-space: nowrap;
+}
+</style>
+
+
 |   YEAR |   MONTH | STATE   | NERC.REGION   | CLIMATE.REGION     |   ANOMALY.LEVEL | CLIMATE.CATEGORY   | OUTAGE.RESTORATION.DATE   | OUTAGE.RESTORATION.TIME   | CAUSE.CATEGORY     | CAUSE.CATEGORY.DETAIL   |   OUTAGE.DURATION |   CUSTOMERS.AFFECTED |   RES.PRICE |   COM.PRICE |   IND.PRICE |   TOTAL.PRICE |   RES.SALES |   COM.SALES |   IND.SALES |   TOTAL.SALES |   RES.PERCEN |   COM.PERCEN |   IND.PERCEN |   RES.CUSTOMERS |   COM.CUSTOMERS |   IND.CUSTOMERS |   TOTAL.CUSTOMERS |   RES.CUST.PCT |   COM.CUST.PCT |   IND.CUST.PCT |   PC.REALGSP.STATE |   PC.REALGSP.USA |   PC.REALGSP.REL |   PC.REALGSP.CHANGE |   UTIL.REALGSP |   TOTAL.REALGSP |   UTIL.CONTRI |   PI.UTIL.OFUSA |   POPULATION |   POPPCT_URBAN |   POPPCT_UC |   POPDEN_URBAN |   POPDEN_UC |   POPDEN_RURAL |   AREAPCT_URBAN |   AREAPCT_UC |   PCT_LAND |   PCT_WATER_TOT |   PCT_WATER_INLAND |   CUST.AFF.MISSING |   TIME.DATE.DOW |   TIME.HOUR-SIN |   TIME.HOUR-COS |
 |--------|---------|---------|---------------|--------------------|-----------------|--------------------|---------------------------|---------------------------|--------------------|-------------------------|-------------------|----------------------|-------------|-------------|-------------|---------------|-------------|-------------|-------------|---------------|--------------|--------------|--------------|-----------------|-----------------|-----------------|-------------------|----------------|----------------|----------------|--------------------|------------------|------------------|---------------------|----------------|-----------------|---------------|-----------------|--------------|----------------|-------------|----------------|-------------|----------------|-----------------|--------------|------------|-----------------|--------------------|--------------------|-----------------|-----------------|-----------------|
 |   2011 |       7 | MN      | MRO           | East North Central |            -0.3 | normal             | 2011-07-03 00:00:00       | 20:00:00                  | severe weather     | nan                     |              3060 |                70000 |       11.6  |        9.18 |        6.81 |          9.28 |     2332915 |     2114774 |     2113291 |       6562520 |      35.5491 |      32.225  |      32.2024 |     2.30874e+06 |          276286 |           10673 |       2.5957e+06  |        88.9448 |        10.644  |       0.411181 |              51268 |            47586 |          1.07738 |                 1.6 |           4802 |          274182 |       1.75139 |             2.2 |  5.34812e+06 |          73.27 |       15.28 |           2279 |      1700.5 |           18.2 |            2.14 |          0.6 |    91.5927 |         8.40733 |            5.47874 |                  0 |               4 |      0.0741085  |        0.99725  |

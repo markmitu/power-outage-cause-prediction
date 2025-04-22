@@ -22,7 +22,7 @@ During cleaning, empty or columns which were deemed irrelevant to the problem we
 **HURRICANE.NAMES** - If the outage was a hurricane, provide it's name. This was dropped due to the sparsisty of data in this column
 **DEMAND.LOSS.MW** - Although intendinng to record the loss of electicity (in MW/hr), according to the dataset's source "in many cases, total demand is reported" instead. Coupled with a large proprotion of missing values, this column does not contain enough real data to aid in predicting. 
 
-Additionally, basic type casting for numerical features was performed. After performing cleaning (and imputations, as described below), the first few rows of the dataset now look like: 
+Additionally, basic type casting for numerical features was performed. After performing cleaning (as well as imputations and transformations, as described later), the first few rows of the dataset now look like: 
 
 
 |   YEAR |   MONTH | STATE   | NERC.REGION   | CLIMATE.REGION     |   ANOMALY.LEVEL | CLIMATE.CATEGORY   | OUTAGE.RESTORATION.DATE   | OUTAGE.RESTORATION.TIME   | CAUSE.CATEGORY     | CAUSE.CATEGORY.DETAIL   |   OUTAGE.DURATION |   CUSTOMERS.AFFECTED |   RES.PRICE |   COM.PRICE |   IND.PRICE |   TOTAL.PRICE |   RES.SALES |   COM.SALES |   IND.SALES |   TOTAL.SALES |   RES.PERCEN |   COM.PERCEN |   IND.PERCEN |   RES.CUSTOMERS |   COM.CUSTOMERS |   IND.CUSTOMERS |   TOTAL.CUSTOMERS |   RES.CUST.PCT |   COM.CUST.PCT |   IND.CUST.PCT |   PC.REALGSP.STATE |   PC.REALGSP.USA |   PC.REALGSP.REL |   PC.REALGSP.CHANGE |   UTIL.REALGSP |   TOTAL.REALGSP |   UTIL.CONTRI |   PI.UTIL.OFUSA |   POPULATION |   POPPCT_URBAN |   POPPCT_UC |   POPDEN_URBAN |   POPDEN_UC |   POPDEN_RURAL |   AREAPCT_URBAN |   AREAPCT_UC |   PCT_LAND |   PCT_WATER_TOT |   PCT_WATER_INLAND |   CUST.AFF.MISSING |   TIME.DATE.DOW |   TIME.HOUR-SIN |   TIME.HOUR-COS |
@@ -39,10 +39,40 @@ To gain a better understanding of this dataset before formalizing a prediction t
 
 <iframe
  src="assets/duration-vs-customersaffected.html"
- width="800"
- height="600"
+ width="600"
+ height="450"
  frameborder="0"
  ></iframe>
+
+Although relationships like these do not reveal immediate patterns, they show that the patterns in this dataset are heavily nuanced by the wide range of types of power outages included in this dataset. In other words, variables such as these are indeed dependent on CAUSE.CATEGORY, as the nature of a power outage naturally determines many of its characteristics. One such example of these patterns, which will later be used for it's predictive ability, focuses on a pattern emerging from the fact that many missing values in the CUSTOMERS.AFFECTED column correlate with CAUSE.CATEGORY. The following plots showcase the distribution of CAUSE.CATEGORY, before and after filtering for these missing values:
+
+<iframe
+ src="assets/causecategory-filtered.html"
+ width="600"
+ height="450"
+ frameborder="0"
+ ></iframe>
+<iframe
+ src="assets/causecategory-dist.html"
+ width="600"
+ height="450"
+ frameborder="0"
+ ></iframe>
+
+Notably, intentional attacks consist of 50% of observations missing a value for CUSTOMERS.AFFECTED. While it is uknown how collecting the data used in this dataset may have led to these results, the following classifier models which leverage this information assume similar circumstances exist at the time an outage occurs. If so, this information can be used by including relevant features in a model.
+Furthermore, the distribution of CAUSE.CATEGORY alone showcasses the uneven distrobution of outages causes in this dataset. This direclty implies later models must account for this fact in order to make accurate predictions.
+
+Investigating further, aggregating by CAUSE.CATEGORY yields some interesting statistics. For example, the variations across cateogories show how each type of outage affects customers as shown below.
+
+| CAUSE.CATEGORY                |   outages |   total_customers_all_time |   avg_customers |
+|-------------------------------|-----------|----------------------------|-----------------|
+| severe weather                |       744 |                1.37634e+08 |        181336   |
+| system operability disruption |       123 |                1.97349e+07 |        156626   |
+| intentional attack            |       403 |                1.20169e+07 |         28748.6 |
+| equipment failure             |        55 |                4.59074e+06 |         80539.2 |
+| public appeal                 |        69 |                3.32178e+06 |         48141.7 |
+| fuel supply emergency         |        38 |                2.37765e+06 |         47553   |
+| islanding                     |        44 |           743319           |         16159.1 |
 
 
 ### Imputations

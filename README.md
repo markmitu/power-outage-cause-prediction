@@ -197,14 +197,10 @@ A standard **Multi-class Logistic Regression** model is used to create a baselin
 
 
 - **Economic features** 
- - `RES.PERCEN` 
-   - Residential electricity consumption percentage of total load (quantitative) 
- - `IND.PERCEN` 
-   - Industrial electricity consumption percentage of total load (quantitative) 
- - `UTIL.CONTRI` 
-   - Utility industry's contribution to the total GSP in the State (as %) (quantitative) 
- - `TOTAL.REALGSP` 
-   - Real GSP contributed by all industries in a given state (measured in 2009 U.S dollars) (quantitative)
+ - `RES.PERCEN`: Residential electricity consumption percentage of total load (quantitative) 
+ - `IND.PERCEN`: Industrial electricity consumption percentage of total load (quantitative) 
+ - `UTIL.CONTRI`: Utility industry's contribution to the total GSP in the State (as %) (quantitative) 
+ - `TOTAL.REALGSP`: Real GSP contributed by all industries in a given state (measured in 2009 U.S dollars) (quantitative)
 
 
 Of these 14 total features, 10 are quantitative/numeric, 2 are ordinal, and 2 are nominal/categorical.
@@ -255,7 +251,9 @@ To examine which features are (un)important to the model, the absolute value of 
 
 ### Feature Engineering
 When training the baseline model via cross-validation, a particular error occurred where rare categorical features were encountered in validation sets but not training sets. An exact example output is as follows:
-`UserWarning: Found unknown categories in columns [...] during transform. These unknown categories will be encoded as all zeros`
+
+`UserWarning: Found unknown categories in columns [...] during transform. These unknown categories will be encoded as all zeros`.
+
 Such a warning indicates that in order to negate this information loss and produce better results, rare categories should be grouped into an "Other" category to prevent errors. This is confirmed by surveying the distribution of the STATE and NERC.REGION variables:
 
 
@@ -338,12 +336,9 @@ Features used:
 
 
 - **Economic features** 
- - `IND.PERCEN` 
-   - Industrial electricity consumption percentage of total load (quantitative) 
- - `UTIL.CONTRI` 
-   - Utility industry's contribution to the total GSP in the State (as %) (quantitative) 
- - `TOTAL.REALGSP` 
-   - Real GSP contributed by all industries in a given state (measured in 2009 U.S dollars) (quantitative)
+ - `IND.PERCEN`: Industrial electricity consumption percentage of total load (quantitative) 
+ - `UTIL.CONTRI`: Utility industry's contribution to the total GSP in the State (as %) (quantitative) 
+ - `TOTAL.REALGSP`: Real GSP contributed by all industries in a given state (measured in 2009 U.S dollars) (quantitative)
 
 
 Overall, this model has improved significantly over the baseline. While the choice of algorithm remains a multi-class logistic regression, this new model has both strictly better performance while also being far less overfit than the baseline.

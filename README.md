@@ -168,7 +168,7 @@ After performing this deep dive on the dataset and identifying some of the key p
 **Given the immediate context of a power outage as it occured, what caused it?**
 
 
-This results in the need for a multiclass classification algorithm which treats CAUSE.CATEGORY as the response variable. The metric used to evaluate models will be overall accuracy, however confusion matrices are used to evaluate recall for specific categories.
+This results in the need for a **multiclass classification** algorithm which treats CAUSE.CATEGORY as the response variable. The metric used to evaluate models will be overall accuracy, however confusion matrices are used to evaluate recall for specific categories.
 
 
 Finally, it is worth noting that the only features which are unavailable at the time of prediction are OUTAGE.DURATION and OUTAGE.RESTORATION.DATE–these have been omitted from the project to prevent data leakage. There is some ambiguity of whether CUSTOMERS.AFFECTED should be included in this group based on how this data was actually collected, however as mentioned previously this project assumes a modern monitoring system capable of implementing such a classifier also has the technology to gauge the number of affected customers, or at least produce a valid estimate. Since models will also encode the missingness of such information as its own feature, any extraordinary cases are accounted for.

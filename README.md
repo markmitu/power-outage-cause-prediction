@@ -35,7 +35,14 @@ Additionally, basic type casting for numerical features was performed. After per
 
 
 ### Exploratory Data Analysis - Univariate and Bivariate 
-To gain a better understanding of this dataset before formalizing a prediction task, a visual analysis of various distrobutions and their correlations was performed to identify any patterns. 
+To gain a better understanding of this dataset before formalizing a prediction task, a visual analysis of various distrobutions and their correlations was performed to identify any patterns. At first attempts were made to identify any correlations between  cirtical variables, however in many cases no such pattern became appararent. One such instance occurs when attempting to plot OUTAGE.DURATION against CUSTOMERS.AFFECTED, which was initially done to search for ways to capture the "severity" of an outage: 
+
+<iframe
+ src="assets/duration-vs-customersaffected.html"
+ width="800"
+ height="600"
+ frameborder="0"
+ ></iframe>
 
 
 ### Imputations

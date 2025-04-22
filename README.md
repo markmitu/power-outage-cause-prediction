@@ -25,9 +25,9 @@ The following sections catalogue this project's development process, including s
 
 ### Data Cleaning 
 During cleaning, empty or columns which were deemed irrelevant to the problem were removed. Irrelevant columns include:
-**OBS** - Observation number, instead used as an index
-**HURRICANE.NAMES** - If the outage was caused by a hurricane, provide its name. This was dropped due to the sparsity of data in this column
-**DEMAND.LOSS.MW** - Although intending to record the loss of electricity (in MW/hr), according to the dataset's source "in many cases, total demand is reported" instead. Coupled with a large proportion of missing values, this column does not contain enough real data to aid in predicting.
+1. **OBS** - Observation number, instead used as an index
+2. **HURRICANE.NAMES** - If the outage was caused by a hurricane, provide its name. This was dropped due to the sparsity of data in this column
+3. **DEMAND.LOSS.MW** - Although intending to record the loss of electricity (in MW/hr), according to the dataset's source "in many cases, total demand is reported" instead. Coupled with a large proportion of missing values, this column does not contain enough real data to aid in predicting.
 
 
 Additionally, basic type casting for numerical features was performed. After performing cleaning (as well as imputations and transformations, as described later), the first few rows of the dataset now look like:
@@ -97,7 +97,7 @@ Investigating further, aggregating by CAUSE.CATEGORY yields some interesting sta
 
 ### Imputations
 Imputations were performed on the following columns:
-**CUSTOMERS.AFFECTED** - report the number of customers affected
+**CUSTOMERS.AFFECTED** - the number of customers affected
 **RES.PERCEN** - Percentage of residential electricity consumption compared to the total electricity consumption in the state (in %)
 **IND.PERCEN** - Percentage of industrial electricity consumption compared to the total electricity consumption in the state (in %)
 
@@ -342,8 +342,6 @@ Features used:
 
 
 Overall, this model has improved significantly over the baseline. While the choice of algorithm remains a multi-class logistic regression, this new model has both strictly better performance while also being far less overfit than the baseline.
-
-
 
 
 

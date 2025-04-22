@@ -47,13 +47,13 @@ To gain a better understanding of this dataset before formalizing a prediction t
 Although relationships like these do not reveal immediate patterns, they show that the patterns in this dataset are heavily nuanced by the wide range of types of power outages included in this dataset. In other words, variables such as these are indeed dependent on CAUSE.CATEGORY, as the nature of a power outage naturally determines many of its characteristics. One such example of these patterns, which will later be used for it's predictive ability, focuses on a pattern emerging from the fact that many missing values in the CUSTOMERS.AFFECTED column correlate with CAUSE.CATEGORY. The following plots showcase the distribution of CAUSE.CATEGORY, before and after filtering for these missing values:
 
 <iframe
- src="assets/causecategory-filtered.html"
+ src="assets/causecategory-dist.html"
  width="600"
  height="450"
  frameborder="0"
  ></iframe>
 <iframe
- src="assets/causecategory-dist.html"
+ src="assets/causecategory-filtered.html"
  width="600"
  height="450"
  frameborder="0"
@@ -81,6 +81,44 @@ Imputations were performed on the following columns:
 **RES.PERCEN** - Percentage of residential electricity consumption compared to the total electricity consumption in the state (in %)
 **IND.PERCEN** - Percentage of industrial electricity consumption compared to the total electricity consumption in the state (in %)
 
-CUSTOMERS.AFFECTED was imputed using a conditional median stretegy, grouping on NERC.REGION (a location metric) then imputing using the median of CUSTOMERS.AFFECTED. The median was chosen over the mean due to the skewed distrobution of CUSTOMERS.AFFECTED, as a number of the most extreme outages in the united states caused by hurricanes or major grid failures affected exponentially more consumers. 
+CUSTOMERS.AFFECTED was imputed using a conditional median stretegy, grouping on NERC.REGION (a location metric) then imputing using the median of CUSTOMERS.AFFECTED. The median was chosen over the mean due to the skewed distrobution of CUSTOMERS.AFFECTED, as a number of the most extreme outages in the united states caused by hurricanes or major grid failures affected exponentially more consumers. The effects are visualized below: 
 
-RES.PERCEN and IND.PERCEN were both imputed using a strategy that grouped STATE for a given YEAR, then imputing using the mean. For remaining observations with a unique year/state combination, groupings are only performed by state. 
+<iframe
+ src="assets/customersaffected-pre-impute.html"
+ width="400"
+ height="300"
+ frameborder="0"
+ ></iframe>
+ <iframe
+ src="assets/customersaffected-post-impute.html"
+ width="400"
+ height="300"
+ frameborder="0"
+ ></iframe>
+
+RES.PERCEN and IND.PERCEN were both imputed using a strategy that grouped STATE for a given YEAR, then imputing using the mean. For remaining observations with a unique year/state combination, groupings are only performed by state. The effects are visualized below: 
+
+<iframe
+ src="assets/respercen-pre-impute.html"
+ width="400"
+ height="300"
+ frameborder="0"
+ ></iframe>
+ <iframe
+ src="assets/respercen-post-impute.html"
+ width="400"
+ height="300"
+ frameborder="0"
+ ></iframe>
+ <iframe
+ src="assets/indpercen-pre-impute.html"
+ width="400"
+ height="300"
+ frameborder="0"
+ ></iframe>
+ <iframe
+ src="assets/indpercen-post-impute.html"
+ width="400"
+ height="300"
+ frameborder="0"
+ ></iframe>
